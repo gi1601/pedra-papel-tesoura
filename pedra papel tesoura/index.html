@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedra, papel ou tesoura</title>
+</head>
+<body>
+    <h2>Pedra, papel ou tesoura</h2>
+
+   
+    
+    <div id="btn">
+        <button onclick="jogar(0)">Pedra</button>
+        <button onclick="jogar(1)">Papel</button>
+        <button onclick="jogar(2)">Tesoura</button>
+
+    </div>
+
+
+
+    <h4></h4>
+    <p></p>
+
+    <script>
+
+        
+
+        async function jogar(selecionado){
+            var computador = await numeroAleatorio(0, 2);
+            var jogador = selecionado 
+            if(computador == jogador){
+                resultado("Empate", computador);
+            }else {
+                if ((computador == 0 && jogador == 2) || //* || = ou*//
+                (computador == 1 && jogador == 0) ||
+                (computador == 2 && jogador == 1)) {
+                    resultado("Você perdeu", computador);
+                } else {
+                   resultado("Você venceu" , computador);
+                }
+            }
+            
+            
+        }
+
+        function resultado( mensagem, computador){
+            const opcoes = ['Pedra', 'Papel', 'Tesoura']
+            document.querySelector("h4").innerHTML = mensagem;
+            document.querySelector("p").innerHTML = 'O computador escolheu ' + opcoes[computador];
+        }
+
+        //*computador*//
+        function numeroAleatorio (min, max){
+            return (Math.random() * (max -min) + min).toFixed();
+            //*retorna numeros aleatorios*//
+        }
+    </script>
+</body>
+</html>
